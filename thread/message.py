@@ -1,6 +1,7 @@
 def create(thread_id, query, query_type):
     from openai import OpenAI
-    client = OpenAI(api_key = "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")
+    import os
+    client = OpenAI(os.environ["OPENAI_KEY"])
 
     try:
         if query_type == "Exam":   # Exam Question
