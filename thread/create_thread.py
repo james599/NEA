@@ -1,6 +1,7 @@
 def create(grade, file):
     from openai import OpenAI
-    client = OpenAI(api_key = "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")
+    import os
+    client = OpenAI(os.environ["OPENAI_KEY"])
 
     thread = client.beta.threads.create()
 
