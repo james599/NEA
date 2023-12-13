@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/home.css') }}">
+    <title>Welcome to ComSci AI!</title>
+</head>
+<body>
+    <div class="comsci-container">
+        <form action="" method="post">
+            <div class="header">
+                <h1>Welcome to ComSci AI!</h1>
+            </div>
+            <div class="grades-dropdown">
+                <label for="grades">Grades:</label>
+                <select type="text" id="grades" name="grades">
+                    <option value="any">Any</option>
+                    <option value="a-star">A*</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                    <option value="d">D</option>
+                </select>
+            </div>
+            <div class="drop-zone">
+                <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                <input type="file" nameid="myFile" multiple class="drop-zone__input">
+            </div>
+            <input class="btn btn-default" type="submit" value="Submit">
+        </form>
+    </div>
+    <script src="{{ url_for('static',filename='js/create_thread.js') }}"> </script>
+</body>
+</html>

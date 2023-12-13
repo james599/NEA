@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/chat.css') }}">
+    <title>Chat Interface</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Chat Title</h2>
+                <a style="text-decoration: none;" class="new-chat-btn" href="{{ url_for('create_thread') }}">New Chat</a>
+            </div>
+            <div class="sidebar-content">
+                {% for thread_id in range(num_threads): %}
+                    <a style="padding: 5%;text-decoration: none;" href="{{ url_for('create_thread', thread=threads[thread_id]) }}"><div class="threads">Something in {{threads[thread_id]}}</div></a>
+                {% endfor %}
+            </div>
+            <div class="user-dropdown">
+                <button onclick="toggleUserMenu()">Menu</button>
+                <div class="user-menu" id="userMenu">
+                    <br>
+                    <a href="#">Settings</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="chat-area">
+            <div class="chat-header">
+                <h3>AI makes mistakes</h3>
+                {% if error: %}
+                    <h3>{{error}}</h3>
+                {% endif %}
+            </div>
+            <div class="chat-content">
+                {% if response is string: %}
+                    <span style="background-color: rgb(38, 38, 174);" class="chat-bubble">
+                        <img src="{{ url_for('static',filename='img/bot_icon.png') }}" alt="BOT" width="6%" height="6%">
+                        <h3 >{{response}}</h3>
+                    </span>
+                {% else %}
+                    {% for message in response[::-1]: %}
+                        {% set bubble = message.content[0].text.value %}
+                        {% if bubble not in exempt: %}
+                            {% if message.role == "user": %}
+                                {% set bubble = bubble.split("For context:")[1] %}
+                                <span style="background-color: rgb(0, 0, 72);" class="chat-bubble">
+                                    <img src="{{ url_for('static',filename='img/user_icon.png') }}" alt="USER" width="6%" height="6%">
+                                    <h3>{{bubble}}</h3>
+                                </span>
+                            {% else %}
+                                <span style="background-color: rgb(38, 38, 174);" class="chat-bubble">
+                                    <img src="{{ url_for('static',filename='img/bot_icon.png') }}" alt="BOT" width="6%" height="6%">
+                                    <h3 >{{bubble}}</h3>
+                                </span>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <form action="" method="post">
+                <div class="user-entry">
+                    <select name="query_type" class="entry-options">
+                        <option value="QA">QA</option>
+                        <option value="Exam">Exam</option>
+                    </select>
+                    <textarea name="query" id="queryInput" placeholder="Type your message..."></textarea>
+                    <input id="submitQuery" class="btn btn-default entry-options" type="submit" value="Send">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="{{ url_for('static',filename='js/chat.js') }}"> </script>
+</html>
