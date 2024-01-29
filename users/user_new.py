@@ -1,9 +1,9 @@
 def append(username, password):
     import string
     import random
-    from hashlib import sha256
+    from hashlib import sha512
     salt = ''.join(random.choices(string.ascii_lowercase + string.digits, k=64))
-    hash_password = sha256(password.encode('utf-8') + salt.encode('utf-8')).hexdigest()
+    hash_password = sha512(password.encode('utf-8') + salt.encode('utf-8')).hexdigest()
     
     user_db = open("users/users.txt", "a")
     user_db.write(username + "," + hash_password + "," + salt + ",\n")
