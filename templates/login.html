@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
-    <script src="{{ url_for('static',filename='js/login.js') }}"> </script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css') }}">
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Login Page</title>
 </head>
 <body>
     <div class="login-container">
-        <div class="login-header">Login</div>
+        <div class="login-header">Login
+          {% if signedUp %}
+            {{ signedUp }}
+          {% endif %}
+        </div>
         
         <form action="" method="post">
           <div class="input-container">
@@ -23,12 +28,16 @@
             <span class="show-password" onclick="togglePassword()">Show</span>
           </div>
 
-          <input class="btn btn-default" type="submit" value="Login">
+          <div class="input-container">
+            <input id="submit" type="submit" value="Login" class="btn btn-primary">
+          </div>
         </form>
+
         {% if error %}
-          <p class="error"><strong>Error:</strong> {{ error }}
+          <p class="error"><strong>Error:</strong> {{ error }}</p>
         {% endif %}
-        <p class="no-login">Don't have a login? <a href="{{ url_for('sign_up') }}">Sign up</a></p>
+
+        <p class="no-login"><a href="{{ url_for('sign_up') }}" class="no-login">Don't have a login? Sign up</a></p>
     </div>
 </body>
 </html>
