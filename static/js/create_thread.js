@@ -49,4 +49,4 @@ reader.readAsDataURL(file);
 } else {
     thumbnailElement.style.backgroundImage = null;
 }
-} 
+}
