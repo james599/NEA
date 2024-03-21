@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1d1f21;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 24px;
+    background-color: #2d2f33;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.login-header {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.input-container {
+    margin-bottom: 24px;
+    position: relative;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 93%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #4d4d4d;
+    font-size: 16px;
+    color: #fff;
+    background-color: #333;
+    display: block;
+    margin: 0 auto;
+}
+
+.show-password {
+    position: absolute;
+    top: 70%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #c0c0c0;
+    cursor: pointer;
+}
+
+.show-password:before {
+    content: "\f06e";
+    font-family: "FontAwesome";
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.error {
+    color: #ff0000;
+    margin-bottom: 10px;
+}
+
+.no-login a {
+    color: #c0c0c0;
+    text-decoration: none;
+}
+
+.no-login a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        margin-top: 50px;
+    }
+}
