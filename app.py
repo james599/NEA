@@ -18,7 +18,6 @@ def chat():
     from assistant.run_assistant import status
 
     threads = view(session["username"])
-    error = ""
 
     exempt = ["My target grade is a any. Respond, in a short response. But only using the A-Level OCR curriculum. Your responses should be a sentence or two, unless the user’s request requires reasoning or long-form outputs. Only write the response, no pleasantries."]
 
@@ -46,7 +45,7 @@ def chat():
             else:
                 response = moderation
     
-    return render_template('chat.html', exempt=exempt, response=response, error=error, username=session["username"], threads=threads, num_threads=len(threads))
+    return render_template('chat.html', exempt=exempt, response=response, threads=threads, thread_id=thread_id)
 
 # Route for all logic when making new thread
 @app.route('/create_thread', methods=['GET', 'POST'])
@@ -81,6 +80,11 @@ def login():
     from users.user_verify import verify
     from users.view_threads import view
     error = None
+    if 'signedUp' in request.args:
+        signedUp = "New account created, please login again."
+    else:
+        signedUp = None
+
     if request.method == 'POST':
         if request.form['username'].strip() == "" or request.form['password'].strip() == "":
             error = 'Please enter Username/Password.'
@@ -93,7 +97,7 @@ def login():
                     return redirect(url_for('create_assistant'))
                 else:
                     return redirect(url_for('chat'))
-    return render_template('login.html', error=error)
+    return render_template('login.html', error=error, signedUp=signedUp)
 
 # Route for handling the sign up page logic
 @app.route('/sign_up', methods=['GET', 'POST'])
@@ -116,7 +120,8 @@ def sign_up():
                     else:
                         append(request.form['username'], request.form['password'])
                         error = None
-                        return redirect(url_for('login'))
+                        signedUp = True
+                        return redirect(url_for('login', signedUp=signedUp))
             else:
                 error = moderation
     return render_template('sign_up.html', error=error)
@@ -131,6 +136,6 @@ def logout():
     return redirect(url_for("login"))
 
 if __name__ == '__main__':
-    # Only use below in dev server. 
+    # Only use below in dev server.
     app.config["DEBUG"] = True
     app.run(host="127.0.0.1", port=5000)
