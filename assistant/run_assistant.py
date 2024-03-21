@@ -8,7 +8,6 @@ def create(thread_id):
             assistant_id = user_record.split(",")[3].split("|")[0]
 
     from openai import OpenAI
-    import os
     client = OpenAI(os.environ["OPENAI_KEY"])
 
     run = client.beta.threads.runs.create(
@@ -20,7 +19,6 @@ def create(thread_id):
 
 def status(thread_id, run_id):
     from openai import OpenAI
-    import os
     client = OpenAI(os.environ["OPENAI_KEY"])
 
     run = client.beta.threads.runs.retrieve(
@@ -30,6 +28,5 @@ def status(thread_id, run_id):
 
     if run.status == "completed":
         return True
-    else:
-        return False
+    return False
      
