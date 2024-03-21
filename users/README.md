@@ -1,5 +1,5 @@
 users.txt stores all the users:
-USERNAME, PASSWORD, [THREAD1, THREAD2 ...]
+USERNAME, HASHED PASSWORD, ASSISTANT ID | THREAD1 | THREAD2 ...
 
 user_verify.py checks user information given in /login
 
