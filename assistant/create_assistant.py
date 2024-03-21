@@ -1,5 +1,6 @@
 def create(username, language, user_type):
     from openai import OpenAI
+    import os
     client = OpenAI(os.environ["OPENAI_KEY"])
     
     if user_type is not None: # Teacher
