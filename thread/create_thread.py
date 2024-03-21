@@ -1,6 +1,5 @@
 def create(grade, file):
     from openai import OpenAI
-    import os
     client = OpenAI(os.environ["OPENAI_KEY"])
 
     thread = client.beta.threads.create()
@@ -18,7 +17,7 @@ def create(grade, file):
             purpose="assistants"
         ) # adding file to openai servers
 
-        assistant_file = client.beta.assistants.files.create(
+        client.beta.assistants.files.create(
             assistant_id=message.assistant_id, 
             # retrieving assistant_id using json response from message 
             file_id=uploaded_file.id
