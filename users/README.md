@@ -10,3 +10,5 @@ append_thread.py adds openAI threads to DB array
 pop_thread.py deletes particular thread from DB array
 
 view_threads.py returns the array of threads
+
+🐣
