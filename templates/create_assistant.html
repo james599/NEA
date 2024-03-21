@@ -9,18 +9,26 @@
 <body>
     <div class="comsci-container">
         <form action="" method="post">
-            <div class="language-dropdown">
-                <label for="language">Language:</label>
-                <select id="language" type="text" name="language">
-                    <option value="English">English</option>
-                    <option value="Spanish">Spanish</option>
-                    <option value="German">German</option>
-                    <!-- Add other common languages here -->
-                </select>
-            </div>
             <div class="header">
                 <h1>Welcome to ComSci AI!</h1>
             </div>
+            <div class="language-dropdown">
+                <label>Language:</label>
+                <select class="dropdown-menu" id="language" type="text" name="language">
+                    <option value="English"><span class="flag-container">
+                        <img src="https://flagcdn.com/w320/us.png" alt="English" class="flag-icon">
+                    </span>English</option>
+                    <option value="Spanish"><span class="flag-container">
+                        <img src="https://flagcdn.com/w320/es.png" alt="Spanish" class="flag-icon">
+                    </span>Spanish</option>
+                    <option value="German" href="#"><span class="flag-container">
+                        <img src="https://flagcdn.com/w320/de.png" alt="German" class="flag-icon">
+                    </span>German</option>
+                    <!-- Add other common languages here -->
+                </ul>
+                </select>
+            </div>
+            <br>
             <div class="user-type-toggle">
                 <label>Student/Teacher:</label>
                 <label class="toggle-label">
@@ -28,6 +36,7 @@
                     <span class="slider round"></span>
                 </label>
             </div>
+            <br>
             <input class="btn btn-default" type="submit" value="Submit">
         </form>
     </div>
