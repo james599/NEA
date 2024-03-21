@@ -18,4 +18,4 @@ def create(thread_id, query, query_type):
             )
         return True
     except:
-        return "ERROR: ChatGPT unreachable. Contact creator"
+        return "ERROR: ChatGPT unreachable. Please try again later..."
