@@ -1,9 +1,12 @@
-def create(username, language, user_type):
-    from openai import OpenAI
-    import os
+from openai import OpenAI
+import os
+def create(username: str, language: str, user_type: str) -> str:
+    # Initialised OpenAI client
     client = OpenAI(os.environ["OPENAI_KEY"])
-    
-    if user_type is not None: # Teacher
+
+    ## Teacher ##
+    if user_type is not None: 
+        # Creates personalised teacher client
         assistant = client.beta.assistants.create(
             instructions=f'''You are assisting me, A-Level Computer Science teacher, who will ask two types of questions:
                             1. Question Answering - specific knowledge based questions so I can teach an A-Level class include breif summaries of anacdotes/examples
@@ -13,8 +16,9 @@ def create(username, language, user_type):
             tools=[{"type": "code_interpreter"}, {"type": "retrieval"}],
             model="gpt-3.5-turbo",
         )
-
-    elif user_type is None: # Student
+    ## Student ##
+    elif user_type is None:
+        # Creates personalised student client
         assistant = client.beta.assistants.create(
             instructions=f'''You are assisting me, A-Level Computer Science student, who will ask two types of questions:
                             1. Question Answering - specific knowledge based questions so I can understand the A-Level curriculum
