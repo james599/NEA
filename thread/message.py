@@ -1,6 +1,6 @@
-def create(thread_id, query, query_type):
-    from openai import OpenAI
-    import os
+from openai import OpenAI
+import os
+def create(thread_id: str, query: str, query_type: str):
     client = OpenAI(os.environ["OPENAI_KEY"])
 
     try:
