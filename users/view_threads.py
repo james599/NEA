@@ -1,4 +1,4 @@
-def view(username):
+def view(username: str) -> array:
     user_db = open("users/users.txt", "r")
     db = user_db.readlines()
     user_db.close()
