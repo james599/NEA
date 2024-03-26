@@ -1,6 +1,6 @@
 from openai import OpenAI
 import os
-def create(grade: str, file: any) -> str:
+def create(grade: str, file: bytes) -> str:
     # Initialize the OpenAI API client
     client = OpenAI(os.environ["OPENAI_KEY"])
     # Create a new thread
