@@ -1,5 +1,5 @@
-def verify(username, expected_password):
-    from hashlib import sha256
+from hashlib import sha256
+def verify(username: str, expected_password: str) -> bool:
     user_db = open("users/users.txt", "r")
     db = user_db.readlines()
     user_db.close()
