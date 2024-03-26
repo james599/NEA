@@ -1,4 +1,4 @@
-def append(username, assistant):  
+def append(username: str, assistant: str) -> int:  
     user_db = open("users/users.txt", "r")
     db = user_db.readlines()
     user_db.close()
