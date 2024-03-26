@@ -1,6 +1,6 @@
 from openai import OpenAI
 import os
-def create(grade: str, file: bytes) -> str:
+def create(grade: str, data: bytes) -> str:
     # Initialize the OpenAI API client
     client = OpenAI(os.environ["OPENAI_KEY"])
     # Create a new thread
@@ -13,11 +13,11 @@ def create(grade: str, file: bytes) -> str:
         content=f"My target grade is a {grade}. Respond, in a short response. But only using the A-Level OCR curriculum. Your responses should be a sentence or two, unless the user’s request requires reasoning or long-form outputs. Only write the response, no pleasantries."
     )
     
-    if file is not None:
+    if data is not None:
         # TODO: Add regex on file
         # Upload the file to the OpenAI API server
         uploaded_file = client.files.create(
-            file=open(file, "rb"),
+            file=open(data, "rb"),
             purpose="assistants"
         )
 
