@@ -3,8 +3,8 @@ def view(username):
     db = user_db.readlines()
     user_db.close()
 
-    line = -1
     for user_record in db:
-        line += 1
         if user_record.split(",")[0] == username:
+            # Remove the newline character and return the user's thread id's, 
+            # converted to a list, and reversed to show in chronological
             return user_record.replace("\n","").split('|')[1:][::-1]
