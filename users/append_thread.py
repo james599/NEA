@@ -1,4 +1,4 @@
-def append(username, thread):
+def append(username: str, thread: str) -> int:
     user_db = open("users/users.txt", "r")
     db = user_db.readlines()
     user_db.close()
