@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, session
 import flask
-from flask_session.__init__ import Session
+from flask_session import Session
 
 app = flask.Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
