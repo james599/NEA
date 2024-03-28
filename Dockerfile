@@ -14,4 +14,4 @@ EXPOSE 5000
 ENV FLASK_APP=app.py
 
 # Define the entry point for the container
-CMD ["flask", "run", "--host", "0.0.0.0"]
+CMD ["flask", "run", "--host=0.0.0.0"]
