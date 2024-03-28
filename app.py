@@ -156,5 +156,5 @@ def logout():
 # Running the app
 if __name__ == '__main__':
     # Only use below in dev server.
-    app.config["DEBUG"] = True
-    app.run(host="127.0.0.1", port=5000)
+    app.config["DEBUG"] = False
+    app.run(host="0.0.0.0", port=5000)
