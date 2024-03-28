@@ -10,5 +10,8 @@ COPY . /app
 # Install the application dependencies
 RUN pip install -r requirements.txt
 
+EXPOSE 5000
+ENV FLASK_APP=my_flask.py
+
 # Define the entry point for the container
-CMD ["python", "app.py"]
+CMD ["flask", "run", "--host", "0.0.0.0"]
