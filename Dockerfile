@@ -13,7 +13,5 @@ RUN pip install -r requirements.txt
 EXPOSE 5000
 ENV FLASK_APP=app.py
 
-CMD ["pip install Flask-Session"]
-
 # Define the entry point for the container
 CMD ["python", "app.py"]
